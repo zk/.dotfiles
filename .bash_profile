@@ -2,6 +2,7 @@ export TERM=xterm-256color
 export PS1="\h:\W \u λ "
 
 source ~/.dotfiles/git-prompt.sh
+source ~/.dotfiles/git-completion.sh
 
 function prompt {
     local BLACK="\[\033[0;30m\]"
@@ -30,4 +31,3 @@ GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWUPSTREAM=true
 
 PROMPT_COMMAND=prompt
-
