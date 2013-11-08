@@ -2,10 +2,10 @@
 export TERM=xterm-256color
 
 # Helpers for showing branch / dirty status in prompt
-#source ~/.dotfiles/git-prompt.sh
+source ~/.dotfiles/git-prompt.sh
 
 # Helpers for git branch, etc tab completion
-#source ~/.dotfiles/git-completion.sh
+source ~/.dotfiles/git-completion.sh
 
 # ZSH-like preexec hook
 source ~/.dotfiles/preexec.sh
@@ -53,7 +53,7 @@ function my_prompt {
     [[ -n $LAST_COMMAND_INFO ]] && local LAST_COMMAND_INFO="$LAST_COMMAND_INFO-- "
     local USER_HOST="$BLACKBOLD\u@\h$RESET"
     local WD="$BLUEBOLD\w$RESET"
-    #local GIT="$GREEN$(__git_ps1 " %s")$RESET"
+    local GIT="$GREEN$(__git_ps1 " %s")$RESET"
     local DELIM="$WHITEBOLD λ$RESET "
 
     PS1="\n$LAST_COMMAND_INFO$USER_HOST:$WD$GIT$DELIM"

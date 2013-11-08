@@ -49,10 +49,52 @@ export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 alias kat="colorize $@"
 
+PROMPT='%{$fg_bold[black]%}%n@%m%{$fg[cyan]%}:%p%{$fg[blue]%}%~ $(git_prompt_info)$(git_prompt_status)%{$fg_bold[white]%}λ %{$reset_color%}'
 
-PROMPT='%n@%m%{$fg_bold[green]%}:%p%{$fg[cyan]%}%c $(git_prompt_info)%{$fg_bold[white]%} λ %{$reset_color%}'
+function displaytime {
+    local T=$1
+    local D=$((T/60/60/24))
+    local H=$((T/60/60%24))
+    local M=$((T/60%60))
+    local S=$((T%60))
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}*%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+    [[ $D > 0 ]] && DS=`printf '%dd ' $D`
+    [[ $H > 0 ]] && HS=`printf '%dh ' $H`
+    [[ $M > 0 ]] && MS=`printf '%dm ' $M`
+    SS=`printf '%ds\n' $S`
+
+    echo "$DS$HS$MS$SS"
+}
+
+function preexec() {
+    timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+    LAST_EXIT=$?
+    RPROMPT=""
+    if [ $LAST_EXIT -ne 0 ]; then
+        RPROMPT=" %{$fg_bold[red]%}$LAST_EXIT"
+    fi
+
+    if [ $timer ]; then
+        timer_show=$(($SECONDS - $timer))
+        [[ $timer_show > 3 ]] && RPROMPT="$RPROMPT $(displaytime timer_show)"
+        unset timer
+    fi
+
+    [[ -n $RPROMPT ]] && RPROMPT="%{$fg_bold[red]%}[$RPROMPT %{$fg_bold[red]%}]%{$reset_color%}"
+}
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="✋ "
+ZSH_THEME_GIT_PROMPT_CLEAN="🚀 "
+
+# ZSH_THEME_GIT_PROMPT_ADDED="%{$FG[082]%}%{$reset_color%}"
+# ZSH_THEME_GIT_PROMPT_DELETED="%{$FG[160]%}%{$reset_color%}"
+# ZSH_THEME_GIT_PROMPT_RENAMED="%{$FG[220]%}%{$reset_color%}"
+# ZSH_THEME_GIT_PROMPT_UNMERGED="%{$FG[082]%}%{$reset_color%}"
+# ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$FG[190]%} %{$reset_color%}"
+
+REPORTTIME=3
