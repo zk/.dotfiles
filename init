@@ -5,7 +5,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 pushd $DIR
 
 ln -s ~/.dotfiles/.bash_profile ~/
-# ln -s ~/.dotfiles/.tmux
 ln -s ~/.dotfiles/.zshrc ~/
 
 git clone git@github.com:zk/prelude.git ~/.emacs.d
