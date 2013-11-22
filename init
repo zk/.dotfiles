@@ -6,6 +6,7 @@ pushd $DIR
 
 ln -s ~/.dotfiles/.bash_profile ~/
 ln -s ~/.dotfiles/.zshrc ~/
+ln -s ~/.dotfiles/.tmux.conf ~/
 
 git clone git@github.com:zk/prelude.git ~/.emacs.d
 
@@ -14,5 +15,8 @@ curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | 
 
 # Install pygmentize for colorzation of source files at the shell
 sudo easy_install Pygments
+
+# Tmux
+echo "Don't forget to install https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/"
 
 popd
