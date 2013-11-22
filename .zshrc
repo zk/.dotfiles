@@ -40,12 +40,12 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku lein brew colorize gem tmux)
+plugins=(git heroku lein brew colorize gem)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:~/bin
 
 alias kat="colorize $@"
 
@@ -97,4 +97,19 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 # ZSH_THEME_GIT_PROMPT_UNMERGED="%{$FG[082]%}%{$reset_color%}"
 # ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$FG[190]%} %{$reset_color%}"
 
+# Don't use iterm2 tmux integration, required to not break loading of ~/.tmux.conf
+ZSH_TMUX_ITERM2=false
+
 REPORTTIME=3
+
+cdpath=($cdpath ~/napplelabs ~/zaarly)
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+
+# Aliases
+alias kaj="sudo killall java"
+
+# RBENV
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
