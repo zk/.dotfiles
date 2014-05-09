@@ -1,0 +1,31 @@
+;; User keymap
+;; -----------------------------
+;; Keymaps are stored as a set of diffs that are merged together together
+;; to create the final set of keys. You can modify these diffs to either add
+;; or subtract bindings.
+;;
+;; Like behaviors, keys are bound by tag. When objects with those tags are active
+;; the key bindings are live. Keys can be bound to any number of Light Table commands,
+;; allowing you the flexibility to execute multiple operations together. To see a list
+;; of all the commands you can execute, start typing a word related to the thing you
+;; want to do in between the square brackets (e.g. type "editor").
+
+{:+ {:app {"ctrl-pmeta-e" [:workspace.show]
+           "ctrl-pmeta-g" [:clear-console]
+           "pmeta-i" [:xray.open-nav]}
+     :editor {"alt-w" [:editor.watch.watch-selection]
+              "alt-shift-w" [:editor.watch.unwatch]
+              "cmd-j" [:paredit.select.parent]
+              "ctrl-pmeta-g" [:clear-inline-results]
+              "ctrl-0" [:paredit.grow.right]
+              "ctrl-i" [:smart-indent-selection]}
+     :editor.clojure {
+
+                      }
+     :filter-list.input {"ctrl-n" [(:filter-list.input.move-selection 1)]
+                         "ctrl-p" [(:filter-list.input.move-selection -1)]
+                         "ctrl-g" [(:filter-list.input.escape! :force)]}
+     :plugin-manager {"ctrl-n" [(:plugin-manager.move-selection 1)]
+                      "ctrl-p" [(:filter-list.input.move-selection -1)]}
+     :console {"ctrl-pmeta-g" [:clear-console]}
+     :find-bar {"ctrl-g" [:find.clear :find.hide]}}}

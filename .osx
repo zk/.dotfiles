@@ -125,8 +125,8 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Disable local Time Machine snapshots
 sudo tmutil disablelocal
 
-# Disable hibernation (speeds up entering sleep mode)
-sudo pmset -a hibernatemode 1
+# Set hibernate mode ram + disk
+sudo pmset -a hibernatemode 3
 
 # Remove the sleep image file to save disk space
 #sudo rm /Private/var/vm/sleepimage

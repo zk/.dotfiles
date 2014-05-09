@@ -1,6 +1,8 @@
 # set allthecolors
 export TERM=xterm-256color
 
+export GOPATH=/Users/zk/gocode
+
 # Helpers for showing branch / dirty status in prompt
 source ~/.dotfiles/git-prompt.sh
 

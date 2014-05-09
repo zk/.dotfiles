@@ -1,0 +1,1 @@
+{"context-menu":{".overlayer":{"Enable test-pak":"test-pak:toggle"}},"menu":[{"label":"Packages","submenu":[{"label":"test-pak","submenu":[{"label":"Toggle","command":"test-pak:toggle"}]}]}]}

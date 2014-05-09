@@ -1,0 +1,35 @@
+(function() {
+  var ClojureView;
+
+  ClojureView = require('./clojure-view');
+
+  module.exports = {
+    clojureView: null,
+    activate: function(state) {
+      var c, expr, nc;
+      nc = require('nrepl-client');
+      c = nc.connect({
+        port: 62144
+      });
+      expr = '(+ 3 4)';
+      return c.once('connect', function() {
+        return c["eval"](expr, function(err, result) {
+          console.log('%s -> %s', expr, err || result);
+          return c.end();
+        });
+      });
+    },
+    deactivate: function() {
+      return this.clojureView.destroy();
+    },
+    serialize: function() {
+      return {
+        clojureViewState: this.clojureView.serialize()
+      };
+    }
+  };
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAiZmlsZSI6ICIiLAogICJzb3VyY2VSb290IjogIiIsCiAgInNvdXJjZXMiOiBbCiAgICAiIgogIF0sCiAgIm5hbWVzIjogW10sCiAgIm1hcHBpbmdzIjogIkFBQUE7QUFBQSxNQUFBLFdBQUE7O0FBQUEsRUFBQSxXQUFBLEdBQWMsT0FBQSxDQUFRLGdCQUFSLENBQWQsQ0FBQTs7QUFBQSxFQUVBLE1BQU0sQ0FBQyxPQUFQLEdBQ0U7QUFBQSxJQUFBLFdBQUEsRUFBYSxJQUFiO0FBQUEsSUFFQSxRQUFBLEVBQVUsU0FBQyxLQUFELEdBQUE7QUFDUixVQUFBLFdBQUE7QUFBQSxNQUFBLEVBQUEsR0FBSyxPQUFBLENBQVEsY0FBUixDQUFMLENBQUE7QUFBQSxNQUNBLENBQUEsR0FBSSxFQUFFLENBQUMsT0FBSCxDQUFXO0FBQUEsUUFBQyxJQUFBLEVBQU0sS0FBUDtPQUFYLENBREosQ0FBQTtBQUFBLE1BR0EsSUFBQSxHQUFPLFNBSFAsQ0FBQTthQU9BLENBQUMsQ0FBQyxJQUFGLENBQU8sU0FBUCxFQUFrQixTQUFBLEdBQUE7ZUFDaEIsQ0FBQyxDQUFDLE1BQUQsQ0FBRCxDQUFPLElBQVAsRUFBYSxTQUFDLEdBQUQsRUFBTSxNQUFOLEdBQUE7QUFDWCxVQUFBLE9BQU8sQ0FBQyxHQUFSLENBQVksVUFBWixFQUF3QixJQUF4QixFQUE4QixHQUFBLElBQU8sTUFBckMsQ0FBQSxDQUFBO2lCQUNBLENBQUMsQ0FBQyxHQUFGLENBQUEsRUFGVztRQUFBLENBQWIsRUFEZ0I7TUFBQSxDQUFsQixFQVJRO0lBQUEsQ0FGVjtBQUFBLElBa0JBLFVBQUEsRUFBWSxTQUFBLEdBQUE7YUFDVixJQUFDLENBQUEsV0FBVyxDQUFDLE9BQWIsQ0FBQSxFQURVO0lBQUEsQ0FsQlo7QUFBQSxJQXFCQSxTQUFBLEVBQVcsU0FBQSxHQUFBO2FBQ1Q7QUFBQSxRQUFBLGdCQUFBLEVBQWtCLElBQUMsQ0FBQSxXQUFXLENBQUMsU0FBYixDQUFBLENBQWxCO1FBRFM7SUFBQSxDQXJCWDtHQUhGLENBQUE7QUFBQSIKfQ==
+//# sourceURL=/Users/zk/.atom/packages/clojure/lib/clojure.coffee

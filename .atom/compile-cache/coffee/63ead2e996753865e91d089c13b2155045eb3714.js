@@ -1,0 +1,79 @@
+(function() {
+  var ClojureView, NC, URL, connections, views, _;
+
+  ClojureView = require('./clojure-view');
+
+  URL = require('url');
+
+  _ = require('underscore-plus');
+
+  NC = require('nrepl-client');
+
+  connections = {};
+
+  views = {};
+
+  module.exports = {
+    clojureView: null,
+    activate: function(state) {
+      var uri;
+      atom.workspaceView.command('nrepl:eval-selection', (function(_this) {
+        return function() {
+          var conn, ed, form, uri, view;
+          ed = atom.workspace.getActiveEditor();
+          form = ed.getSelection().getText();
+          uri = _.chain(connections).keys().first().value();
+          conn = connections[uri];
+          view = views[uri];
+          return conn["eval"](form, function(err, result) {
+            return _.each(views[uri], function(view) {
+              view.output(err || result);
+              return console.log(err || result);
+            });
+          });
+        };
+      })(this));
+      atom.workspace.registerOpener((function(_this) {
+        return function(uri) {
+          var conn, expr, host, pathname, port, protocol, view, _ref;
+          _ref = URL.parse(uri), protocol = _ref.protocol, host = _ref.host, port = _ref.port, pathname = _ref.pathname;
+          if (protocol !== 'nrepl:') {
+            return;
+          }
+          host = host.split(':')[0];
+          conn = NC.connect({
+            port: port,
+            host: host
+          });
+          expr = '(+ 3 4)';
+          conn.once('connect', function() {
+            conn.on('data', function(data) {
+              return console.log('got data', data);
+            });
+            return connections[uri] = conn;
+          });
+          view = new ClojureView(uri);
+          if (!views[uri]) {
+            views[uri] = [];
+          }
+          views[uri].push(view);
+          return view;
+        };
+      })(this));
+      uri = 'nrepl://127.0.0.1:62144';
+      return atom.workspace.open(uri);
+    },
+    deactivate: function() {
+      return this.clojureView.destroy();
+    },
+    serialize: function() {
+      return {
+        clojureViewState: this.clojureView.serialize()
+      };
+    }
+  };
+
+}).call(this);
+
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAiZmlsZSI6ICIiLAogICJzb3VyY2VSb290IjogIiIsCiAgInNvdXJjZXMiOiBbCiAgICAiIgogIF0sCiAgIm5hbWVzIjogW10sCiAgIm1hcHBpbmdzIjogIkFBQUE7QUFBQSxNQUFBLDJDQUFBOztBQUFBLEVBQUEsV0FBQSxHQUFjLE9BQUEsQ0FBUSxnQkFBUixDQUFkLENBQUE7O0FBQUEsRUFDQSxHQUFBLEdBQU0sT0FBQSxDQUFRLEtBQVIsQ0FETixDQUFBOztBQUFBLEVBRUEsQ0FBQSxHQUFJLE9BQUEsQ0FBUSxpQkFBUixDQUZKLENBQUE7O0FBQUEsRUFHQSxFQUFBLEdBQUssT0FBQSxDQUFRLGNBQVIsQ0FITCxDQUFBOztBQUFBLEVBS0EsV0FBQSxHQUFjLEVBTGQsQ0FBQTs7QUFBQSxFQU1BLEtBQUEsR0FBUSxFQU5SLENBQUE7O0FBQUEsRUFRQSxNQUFNLENBQUMsT0FBUCxHQUNFO0FBQUEsSUFBQSxXQUFBLEVBQWEsSUFBYjtBQUFBLElBRUEsUUFBQSxFQUFVLFNBQUMsS0FBRCxHQUFBO0FBQ1IsVUFBQSxHQUFBO0FBQUEsTUFBQSxJQUFJLENBQUMsYUFBYSxDQUFDLE9BQW5CLENBQTJCLHNCQUEzQixFQUFtRCxDQUFBLFNBQUEsS0FBQSxHQUFBO2VBQUEsU0FBQSxHQUFBO0FBRWpELGNBQUEseUJBQUE7QUFBQSxVQUFBLEVBQUEsR0FBSyxJQUFJLENBQUMsU0FBUyxDQUFDLGVBQWYsQ0FBQSxDQUFMLENBQUE7QUFBQSxVQUNBLElBQUEsR0FBTyxFQUFFLENBQUMsWUFBSCxDQUFBLENBQWlCLENBQUMsT0FBbEIsQ0FBQSxDQURQLENBQUE7QUFBQSxVQUdBLEdBQUEsR0FBTSxDQUFDLENBQUMsS0FBRixDQUFRLFdBQVIsQ0FDSixDQUFDLElBREcsQ0FBQSxDQUVKLENBQUMsS0FGRyxDQUFBLENBR0osQ0FBQyxLQUhHLENBQUEsQ0FITixDQUFBO0FBQUEsVUFRQSxJQUFBLEdBQU8sV0FBWSxDQUFBLEdBQUEsQ0FSbkIsQ0FBQTtBQUFBLFVBU0EsSUFBQSxH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
+//# sourceURL=/Users/zk/.atom/packages/clojure/lib/clojure.coffee

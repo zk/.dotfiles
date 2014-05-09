@@ -1,0 +1,23 @@
+{
+  "name": "nrepl-client",
+  "version": "0.1.2",
+  "description": "node client to interact with a Clojure nREPL server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/nodeunit/bin/nodeunit tests.js --reporter minimal"
+  },
+  "keywords": [
+    "Clojure",
+    "ClojureScript",
+    "nrepl"
+  ],
+  "author": "Robert Krahn",
+  "license": "MIT",
+  "dependencies": {
+    "async": "~0.2",
+    "bencode": "~0.4.3"
+  },
+  "devDependencies": {
+    "nodeunit": "~0.8"
+  }
+}

@@ -1,0 +1,1 @@
+{"digest":"ba0bdb85f1af11a655c9962679b87555ce352e20","css":".repl-view {\n  display: -webkit-flex;\n  color: #444444;\n}\n","imports":[{"path":"node_modules/atom-light-ui/stylesheets/ui-variables.less","digest":"b09590cbe2f0416fc5f60a611945029ced0b695a"}],"version":1}

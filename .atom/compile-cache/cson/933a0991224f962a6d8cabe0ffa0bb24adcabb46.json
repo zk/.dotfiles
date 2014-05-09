@@ -1,0 +1,1 @@
+{"context-menu":{".overlayer":{"Enable clojure":"clojure:toggle"}},"menu":[{"label":"Packages","submenu":[{"label":"clojure","submenu":[{"label":"Toggle","command":"clojure:toggle"}]}]}]}
