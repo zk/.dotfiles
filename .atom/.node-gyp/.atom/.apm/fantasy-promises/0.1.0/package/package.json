@@ -1,0 +1,29 @@
+{
+  "name": "fantasy-promises",
+  "version": "0.1.0",
+  "description": "Fantasy Land compatible monadic promises",
+  "main": "index.js",
+  "scripts": {
+    "readme": "$(npm bin)/emu < index.js > README.md",
+    "test": "$(npm bin)/nodeunit test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pufuwozu/fantasy-promises.git"
+  },
+  "keywords": [
+    "promise",
+    "promises",
+    "fantasyland",
+    "monad",
+    "async",
+    "asynchronous",
+    "deferred"
+  ],
+  "author": "Brian McKenna",
+  "license": "MIT",
+  "devDependencies": {
+    "emu": "0.0.2",
+    "nodeunit": "~0.8.0"
+  }
+}

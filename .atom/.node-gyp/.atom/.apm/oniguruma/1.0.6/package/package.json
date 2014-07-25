@@ -1,0 +1,41 @@
+{
+  "main": "./lib/oniguruma.js",
+  "name": "oniguruma",
+  "description": "oniguruma regular expression library",
+  "version": "1.0.6",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/atom/node-oniguruma/raw/master/LICENSE.md"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/node-oniguruma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/atom/node-oniguruma/issues"
+  },
+  "homepage": "http://atom.github.io/node-oniguruma",
+  "keywords": [
+    "regex",
+    "regular expression"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-coffee": "~0.4.0",
+    "grunt-shell": "~0.2.1",
+    "grunt-cli": "~0.1.6",
+    "jasmine-focused": "1.x",
+    "grunt-coffeelint": "0.0.6",
+    "node-cpplint": "~0.1.5"
+  },
+  "dependencies": {
+    "nan": "0.7.0",
+    "bindings": "~1.0.0"
+  },
+  "scripts": {
+    "prepublish": "grunt publish",
+    "test": "grunt test"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "testla",
+  "author": "Josh Perez <josh@goatslacker.com>",
+  "version": "0.1.0",
+  "description": "An opinionated and lightweight testing framework",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goatslacker/testla.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goatslacker/testla/issues"
+  },
+  "main": "lib/index.js",
+  "bin": {
+    "testla": "./bin/testla"
+  },
+  "dependencies": {
+    "dependency-injector": "~0.0.5",
+    "fantasy-promises": "~0.1.0"
+  },
+  "bundleDependencies": [
+    "asserts.js",
+    "fn.js",
+    "observer.js"
+  ],
+  "engines": {
+    "node": ">= 0.4.0"
+  }
+}

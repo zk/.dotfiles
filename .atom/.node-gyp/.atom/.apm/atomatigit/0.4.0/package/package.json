@@ -1,0 +1,21 @@
+{
+  "name": "atomatigit",
+  "main": "./lib/atomatigit",
+  "version": "0.4.0",
+  "description": "Full git interaction, a la magit",
+  "activationEvents": [
+    "atomatigit:show"
+  ],
+  "repository": "https://github.com/diiq/atomatigit",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "gift": "0.4.0",
+    "backbone": "1.x",
+    "underscore": "1.x",
+    "jquery": "1.x",
+    "pathwatcher": "1.x"
+  }
+}

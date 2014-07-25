@@ -1,0 +1,14 @@
+# pack-refs with: peeled fully-peeled 
+8357475c8acff67b01de501115a056f9e6dba848 refs/heads/gh-pages
+9969bb7b245bf191b8d7568e9baca61ccb88557e refs/heads/handle-windows-newlines
+9969bb7b245bf191b8d7568e9baca61ccb88557e refs/heads/master
+005073cf7f4f181b4498b3321a44bc7a8547ac8b refs/tags/v1.0.1
+dd580dc3569429fc0683459e80afad142ed5e78b refs/tags/v1.0.2
+5b5b6ac22c4a6fa4a02a50c384633714207d2d27 refs/tags/v1.0.3
+bf0075e1d4cfa0663bc20b8eb341f0e3f103bb4e refs/tags/v1.0.4
+702a7d1840e67c39915308b0d88876ac84eaabb3 refs/tags/v1.0.5
+^4661b9ddb6d3f995b29cc6cb4523ce20d9b28212
+34c5334fa372ab339440e52bb9437815d437ed91 refs/tags/v1.0.6
+^95dfbd1b0ced4b4b3ad3853685dd516a8f308dd4
+dba8fa33c3bbd384eead7e21ee1c8c5abd8efc61 refs/tags/v1.0.7
+^c6614d942c91cb0bbed977d90eb55d6c2d73a449

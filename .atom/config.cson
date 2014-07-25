@@ -1,7 +1,7 @@
 'exception-reporting':
   'userId': '71d712f3-7d4a-11e1-e51f-55831aea5432'
 'release-notes':
-  'viewedVersion': '0.94.0'
+  'viewedVersion': '0.95.0'
 'welcome':
   'showOnStartup': false
 'metrics':
@@ -9,12 +9,20 @@
 'editor':
   'showInvisibles': true
 'core':
-  'themes': [
-    'atom-light-ui'
-    'solarized-light-syntax'
-  ]
   'projectHome': '/Users/zk/napplelabs'
   'disabledPackages': [
     'clojure'
   ]
+  'ignoredNames': [
+    'cljsout'
+  ]
+  'themes': [
+    'atom-light-ui'
+    'atom-light-syntax'
+  ]
+  'useReactEditor': true
 'autosave': {}
+'minimap':
+  'displayMinimapOnLeft': true
+  'autoToggle': true
+'bracket-matcher': {}

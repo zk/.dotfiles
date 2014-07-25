@@ -1,0 +1,1 @@
+{".workspace":{"ctrl-alt-o":"clojure:toggle"},".editor:not(.mini)":{"(":"clojure:insert-open-paren",")":"clojure:insert-close-paren","backspace":"clojure:backspace","ctrl-k":"clojure:kill-to-end-of-line","cmd-ctrl-k":"clojure:kill-next-atom","cmd-ctrl-i":"clojure:forward-down","ctrl-l":"clojure:indent-form"}}

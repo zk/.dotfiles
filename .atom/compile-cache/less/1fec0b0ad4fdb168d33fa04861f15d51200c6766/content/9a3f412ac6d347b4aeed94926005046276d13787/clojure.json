@@ -1,0 +1,1 @@
+{"digest":"aa377feaf3cb9f7599d47504e0082e2b5ae898fc","css":".repl-view {\n  display: -webkit-flex;\n  color: #333333;\n}\n.clojure.discard {\n  font-style: italic;\n}\n","imports":[{"path":"static/variables/ui-variables.less","digest":"a62842e88e9f6f18817f0a1662302588958b59ac"}],"version":1}
